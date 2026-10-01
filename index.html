@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Todo</title>
+
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+
+<body class="min-h-screen bg-gray-50 text-gray-900">
+
+    <!-- ================= HEADER ================= -->
+    <header class="border-b border-gray-200 bg-white">
+
+        <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+
+            <div>
+                <h1 class="text-xl font-semibold tracking-tight">
+                    My Todo
+                </h1>
+
+                <p class="text-sm text-gray-500">
+                    Keep your day organized.
+                </p>
+            </div>
+
+            <!-- Search -->
+            <div class="hidden sm:block">
+                <input
+                    type="text"
+                    placeholder="Search tasks..."
+                    class="w-56 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm outline-none transition focus:border-gray-400 focus:bg-white"
+                >
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="mx-auto max-w-5xl px-6 py-10">
+
+
+        <!-- Greeting -->
+        <section class="mb-8">
+
+            <p id="currentDate" class="text-sm text-gray-500"></p>
+
+            <h2 class="mt-1 text-3xl font-semibold tracking-tight">
+                Good evening, Aayush
+            </h2>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+        <!-- ================= PROGRESS ================= -->
+<section class="mb-8 rounded-xl border border-gray-200 bg-white p-6">
+
+    <div class="flex items-center justify-between">
+
+        <div>
+            <h3 class="font-medium">
+                Today's progress
+            </h3>
+
+            <p
+                id="progressText"
+                class="mt-1 text-sm text-gray-500"
+            >
+                0 of 0 tasks completed
+            </p>
+        </div>
+
+        <span
+            id="progressPercentage"
+            class="text-lg font-semibold"
+        >
+            0%
+        </span>
+
+    </div>
+
+    <!-- Progress bar -->
+    <div class="mt-5 h-2 overflow-hidden rounded-full bg-gray-100">
+
+        <div
+            id="progressBar"
+            class="h-full rounded-full bg-black"
+            style="width: 0%"
+        ></div>
+
+    </div>
+
+</section>
+
+
+        <!-- ================= ADD TASK ================= -->
+        <section class="mb-8 rounded-xl border border-gray-200 bg-white p-6">
+
+            <h3 class="mb-4 font-medium">
+                Add a task
+            </h3>
+
+            <form class="grid gap-3 md:grid-cols-2">
+
+                <!-- Task -->
+                <input
+                    id ='taskInput'
+                    type="text"
+                    placeholder="What do you need to do?"
+                    class="rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-gray-400"
+                >
+
+                <!-- Date -->
+                <input
+                    id ='dateInput'
+                    type="date"
+                    class="rounded-lg border border-gray-200 px-4 py-3 text-sm text-gray-500 outline-none focus:border-gray-400"
+                >
+
+                <!-- Category -->
+                <select
+                    class="rounded-lg border border-gray-200 px-4 py-3 text-sm text-gray-600 outline-none focus:border-gray-400"
+                >
+                    <option>Category</option>
+                    <option>College</option>
+                    <option>Project</option>
+                    <option>Learning</option>
+                    <option>Personal</option>
+                </select>
+
+                <!-- Priority -->
+                <select
+                    class="rounded-lg border border-gray-200 px-4 py-3 text-sm text-gray-600 outline-none focus:border-gray-400"
+                >
+                    <option>Priority</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+
+                <!-- Button -->
+                <button
+                    type="submit"
+                    class="rounded-lg bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-800 md:col-span-2"
+                >
+                    Add Task
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= TASK HEADER ================= -->
+        <section class="mb-4 flex items-center justify-between">
+
+            <h3 class="text-lg font-semibold">
+                Tasks
+            </h3>
+
+            <div  class="flex gap-1 rounded-lg bg-white p-1">
+
+                <button id="allFilter"
+                    class="rounded-md bg-gray-100 px-3 py-1.5 text-sm font-medium"
+                >
+                    All
+                </button>
+
+                <button id="activeFilter"
+                    class="rounded-md px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100"
+                >
+                    Active
+                </button>
+
+                <button id="doneFilter"
+                    class="rounded-md px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100"
+                >
+                    Done
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TASK LIST ================= -->
+        <section id="taskList" class="space-y-3">
+            Empty
+
+            <!-- Task 1 -->
+            <!-- <article
+                class="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-5 py-4 transition hover:border-gray-300"
+            >
+
+                <input
+                    type="checkbox"
+                    class="h-4 w-4 accent-black"
+                >
+
+                <div class="flex-1">
+
+                    <h4 class="text-sm font-medium">
+                        Complete DBMS Assignment
+                    </h4>
+
+                    <div class="mt-1 flex gap-3 text-xs text-gray-400">
+
+                        <span>College</span>
+                        <span>•</span>
+                        <span>High Priority</span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="text-sm text-gray-400 hover:text-black"
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="text-sm text-gray-400 hover:text-red-500"
+                >
+                    Delete
+                </button> -->
+
+            <!-- </article> -->
+
+<!-- 
+            Task 2
+            <article
+                class="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-5 py-4 transition hover:border-gray-300"
+            >
+
+                <input
+                    type="checkbox"
+                    class="h-4 w-4 accent-black"
+                >
+
+                <div class="flex-1">
+
+                    <h4 class="text-sm font-medium">
+                        Practice JavaScript
+                    </h4>
+
+                    <div class="mt-1 flex gap-3 text-xs text-gray-400">
+
+                        <span>Learning</span>
+                        <span>•</span>
+                        <span>Medium Priority</span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="text-sm text-gray-400 hover:text-black"
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="text-sm text-gray-400 hover:text-red-500"
+                >
+                    Delete
+                </button>
+
+            </article>
+
+
+             Completed Task -->
+            <!-- <article
+                class="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-5 py-4"
+            >
+
+                <input
+                    type="checkbox"
+                    checked
+                    class="h-4 w-4 accent-black"
+                >
+
+                <div class="flex-1">
+
+                    <h4 class="text-sm text-gray-400 line-through">
+                        Update Portfolio
+                    </h4>
+
+                    <div class="mt-1 text-xs text-gray-400">
+                        Project • Completed
+                    </div>
+
+                </div>
+
+                <button
+                    class="text-sm text-gray-400 hover:text-red-500"
+                >
+                    Delete
+                </button>
+
+            </article> -->
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="py-8 text-center text-xs text-gray-400">
+
+        All the Best
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
